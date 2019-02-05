@@ -1,0 +1,25 @@
+
+name:                            routine
+version:                         1
+
+
+
+bots:
+    -
+        username:                '{username}'
+        password:                '{password}'
+
+
+
+actions:
+
+    -
+        name:                    reposting time!
+        from_type:               user
+        nodes:                   '{user_to_repost}'
+        edges:
+            - user_feed
+            - shuffle:
+                amount:          20
+            - upload:
+                caption:         '{caption}'
