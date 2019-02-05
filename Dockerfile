@@ -6,6 +6,5 @@ WORKDIR     /bot
 COPY        ./src /bot
 
 ENV DATA_FILE_PATH
-ENV PINTEREST_SERVICE 'pinterest-scraper-service'
 
 CMD  ['python', '-m', 'src']

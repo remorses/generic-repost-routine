@@ -1,5 +1,4 @@
 import yaml
-import random
 from .support import randomize
 
 

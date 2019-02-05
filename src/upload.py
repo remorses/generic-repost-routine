@@ -1,4 +1,3 @@
-import uuid
 from .support import randomize
 import yaml
 import random
