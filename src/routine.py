@@ -9,7 +9,6 @@ def routine(data):
     template = yaml.load(file.read())
     file.close()
 
-    variables = data
 
     competitors = randomize(data['competitors'],)
     interests = randomize(data['interests'],)
