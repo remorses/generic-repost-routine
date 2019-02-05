@@ -2,9 +2,6 @@
 python -m src  /etc/data.json
 
 """
-
-import json
-import sys
 import os
 from instamob import execute
 from .support import load_json
