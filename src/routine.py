@@ -1,4 +1,5 @@
 import yaml
+import os
 from .support import randomize
 
 
@@ -16,6 +17,8 @@ def routine(data):
 
 
     variables = dict(
+        cache_path= os.environ['CACHE_FILE_PATH'],
+        cookie_path= os.environ['COOKIE_FILE_PATH'],
         username=      data['username'],
         password=      data['password'],
         competitors=   competitors,

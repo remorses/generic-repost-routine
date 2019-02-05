@@ -1,5 +1,6 @@
 from .support import randomize
 import yaml
+import os
 import random
 
 
@@ -16,6 +17,8 @@ def upload( data):
     caption = random.choice(data['captions'],)
 
     variables = dict(
+        cache_path= os.environ['CACHE_FILE_PATH'],
+        cookie_path= os.environ['COOKIE_FILE_PATH'],
         username=       data['username'],
         password=       data['password'],
         competitors=    competitors,

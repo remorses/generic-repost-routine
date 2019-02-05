@@ -8,15 +8,17 @@ bots:
     -
         username:                '{username}'
         password:                '{password}'
+        cookie:                  '{cache_path}'
+        cache:                   '{cache_path}'
 
 
 filter:
         user:
-            followers:         x > 50 and x < 1000
-            following:         x < 500
+            followers:           x > 50 and x < 1000
+            following:           x < 500
         media:
-            likers:            x < 1000
-            hastags:           not in [sex, porn, child]
+            likers:              x < 1000
+            hastags:             not in [sex, porn, child]
 
 
 actions:
@@ -29,23 +31,23 @@ actions:
             # follow random likers
             - shuffle
             - user_feed:
-                amount: 1
+                amount:          1
             - likers:
-                amount: 5
+                amount:          5
             - filter:
                 user:
                     # id:        not bot.cache['followed'].find(identifier=x)
                     is_private:  not x
                     is_verified: not x
             - follow:
-                max:          20
+                max:             20
             - filter:
                 user:
                     is_private:  not x
             - user_feed:
-                amount: 2
+                amount:          2
             - like:
-                max:          30
+                max:             30
     -
         name:                    follow & like hashtags likers
         from_type:               hashtag

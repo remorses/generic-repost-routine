@@ -8,6 +8,8 @@ bots:
     -
         username:                '{username}'
         password:                '{password}'
+        cookie:                  '{cache_path}'
+        cache:                   '{cache_path}'
 
 
 
