@@ -7,18 +7,9 @@ import json
 import sys
 import os
 from instamob import execute
+from .support import load_json
 from .routine import routine
 from .upload import upload
-
-def load_json(path):
-    with open(path) as file:
-        data = json.dumps(file.read())
-    return data
-
-def load_raw(path):
-    with open(path) as file:
-        data = json.dumps(file.read())
-    return data
 
 
 if __name__ == '__main__':
