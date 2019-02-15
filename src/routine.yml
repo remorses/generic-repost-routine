@@ -6,10 +6,10 @@ version:                         1
 
 bots:
     -
-        username:                '{username}'
-        password:                '{password}'
-        cookie:                  '{cache_path}'
-        cache:                   '{cache_path}'
+        username:                {{ username }}
+        password:                {{ password }}
+        cookie:                  {{ cache_path }}
+        cache:                   {{ cache_path }}
 
 
 filter:
@@ -26,7 +26,7 @@ actions:
     -
         name:                    like competitors followers
         from_type:               user
-        nodes:                   '{competitors}'
+        nodes:                   {{ competitors }}
         edges:
             # follow random likers
             - shuffle
@@ -51,7 +51,7 @@ actions:
     -
         name:                    follow & like hashtags likers
         from_type:               hashtag
-        nodes:                   '{hashtags}'
+        nodes:                   {{ hashtags }}
         edges:
             - hashtag_feed
             - likers
@@ -63,7 +63,7 @@ actions:
     -
         name:                    follow & like location posts likers
         from_type:               geotag
-        nodes:                   '{locations}'
+        nodes:                   {{ locations }}
         edges:
             - geotag_feed
             - likers
