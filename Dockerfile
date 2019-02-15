@@ -5,7 +5,7 @@ RUN pip install -r /requirements.txt
 WORKDIR     /bot
 COPY        ./src /bot
 
-# DATA_FILE_PATH
+# GENOTYPE_FILE_PATH
 # CACHE_FILE_PATH
 # COOKIE_FILE_PATH
 

@@ -8,6 +8,8 @@ def randomize(arr, number=3):
         k=number if len(arr) > number else len(arr)
     )
 
+def merge(a, b):
+    return {**a, **b}
 
 def load_json(path):
     with open(path) as file:
