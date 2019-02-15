@@ -3,6 +3,7 @@ version: '3.7'
 services:
     bot:
         build: .
+        command: python -m src
         environment:
             - GENOTYPE_FILE_PATH=/data/genotype.json
             - CACHE_FILE_PATH=/data/cache.db

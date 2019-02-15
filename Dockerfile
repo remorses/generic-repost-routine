@@ -3,7 +3,7 @@ COPY requirements.txt /
 RUN pip install -r /requirements.txt
 
 WORKDIR     /bot
-COPY        ./src /bot
+COPY        ./src /src
 
 # GENOTYPE_FILE_PATH
 # CACHE_FILE_PATH
