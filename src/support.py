@@ -13,7 +13,7 @@ def merge(a, b):
 
 def load_json(path):
     with open(path) as file:
-        data = json.dumps(file.read())
+        data = json.loads(file.read())
     return data
 
 def load_raw(path):
