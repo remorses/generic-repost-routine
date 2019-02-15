@@ -1,2 +1,1 @@
-pyyaml
-instabotnet>=0.0.22
+instabotnet>=0.0.23

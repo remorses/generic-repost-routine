@@ -4,7 +4,6 @@ services:
     bot:
         build:                .
         command:              python -m src
-        mem_limit:            40m
         environment:
             - LOGGING_LEVEL=INFO
             - GENOTYPE_FILE_PATH=/data/genotype.json
