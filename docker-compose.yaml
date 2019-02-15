@@ -9,4 +9,4 @@ services:
             - COOKIE_FILE_PATH=/data/cookie.json
             - PYTHONUNBUFFERED=1
         volumes:
-            - data/:/data
+            - ./data/:/data
