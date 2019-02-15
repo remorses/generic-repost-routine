@@ -2,10 +2,10 @@
 import random
 import json
 
-def randomize(arr, number=3):
+def randomize(arr, k=3):
     return random.sample(
         arr,
-        k=number if len(arr) > number else len(arr)
+        k=k if len(arr) > k else len(arr)
     )
 
 def merge(a, b):
