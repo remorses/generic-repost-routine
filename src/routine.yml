@@ -89,10 +89,10 @@ actions:
             - xmorse_
         edges:
             - user_feed:
-                amount: 20
+                amount: 1
             - like
             - likers:
-                amount: 3
+                amount: 1
             - print:
                 model:
                     name: x.full_name
