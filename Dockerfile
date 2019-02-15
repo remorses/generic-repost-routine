@@ -9,4 +9,4 @@ COPY        ./src /bot
 # CACHE_FILE_PATH
 # COOKIE_FILE_PATH
 
-CMD  ['python', '-m', 'src']
+CMD  ["python", "-m", "src"]
