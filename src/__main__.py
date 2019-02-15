@@ -3,7 +3,7 @@ python -m src
 
 """
 import os
-from instamob import execute
+from instabotnet import execute
 from .support import load_json, load_raw, merge, randomize
 import random
 import time
