@@ -97,6 +97,7 @@ actions:
             - shuffle:
                 amount:          50
             - upload:
+                max:             1
                 caption:         {{ caption }}
 
 
