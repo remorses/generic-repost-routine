@@ -17,12 +17,11 @@ if __name__ == '__main__':
     genotype = load_json(data_path)
 
     fenotype = merge(genotype, dict(
-        cache_path= cache_path,
-        cookie_path= cookie_path,
-        competitors=   randomize(genotype['competitors']),
-        hashtags=      randomize(genotype['hashtags']),
-        geotags=       randomize(genotype['geotags'])
-
+        cache_path=cache_path,
+        cookie_path=cookie_path,
+        competitors=randomize(genotype['competitors']),
+        hashtags=randomize(genotype['hashtags']),
+        geotags=randomize(genotype['geotags'])
     ))
 
     print('starting routine')
@@ -38,13 +37,12 @@ if __name__ == '__main__':
 
 
     fenotype = merge(genotype, dict(
-        cache_path= cache_path,
-        cookie_path= cookie_path,
-        hashtags=      randomize(genotype['hashtags']),
-        geotags=       randomize(genotype['geotags']),
+        cache_path=cache_path,
+        cookie_path=cookie_path,
+        hashtags=randomize(genotype['hashtags']),
+        geotags=randomize(genotype['geotags']),
         caption=random.choice(genotype['captions'],),
-        user_to_repost = randomize(genotype['competitors'], k=1),
-
+        user_to_repost =randomize(genotype['competitors'], k=1),
     ))
 
     execute(
