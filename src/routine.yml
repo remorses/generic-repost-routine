@@ -8,7 +8,7 @@ bots:
     -
         username:                {{ username }}
         password:                {{ password }}
-        cookie:                  {{ cache_path }}
+        cookie:                  {{ cookie_path }}
         cache:                   {{ cache_path }}
 
 
