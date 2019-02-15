@@ -1,14 +1,23 @@
-version: '3.7'
+version:                      '3.7'
 
 services:
     bot:
-        build: .
-        command: python -m src
+        build:                .
+        command:              python -m src
+        mem_limit:            40m
         environment:
-            - LOGGING_LEVEL=DEBUG
+            - LOGGING_LEVEL=INFO
             - GENOTYPE_FILE_PATH=/data/genotype.json
             - CACHE_FILE_PATH=/data/cache.db
             - COOKIE_FILE_PATH=/data/cookie.json
             - PYTHONUNBUFFERED=1
         volumes:
             - ./data/:/data
+        deploy:
+            resources:
+                limits:
+                    cpus:     '0.50'
+                    memory:   50M
+                reservations:
+                    cpus:     '0.25'
+                    memory:   20M
