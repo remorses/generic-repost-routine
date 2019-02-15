@@ -63,7 +63,7 @@ actions:
     -
         name:                    follow & like location posts likers
         from_type:               geotag
-        nodes:                   {{ locations }}
+        nodes:                   {{ geotags }}
         edges:
             - geotag_feed
             - likers
