@@ -5,8 +5,8 @@ RUN pip install -r /requirements.txt
 WORKDIR     /bot
 COPY        ./src /bot
 
-ENV DATA_FILE_PATH
-ENV CACHE_FILE_PATH
-ENV COOKIE_FILE_PATH
+# DATA_FILE_PATH
+# CACHE_FILE_PATH
+# COOKIE_FILE_PATH
 
 CMD  ['python', '-m', 'src']
