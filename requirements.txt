@@ -1,2 +1,2 @@
 pyyaml
-instabotnet>=0.0.18
+instabotnet>=0.0.19

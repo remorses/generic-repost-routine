@@ -86,13 +86,13 @@ bots:
 actions:
     -
         nodes:
-            - xmorse_
+            - thetruegemitaiz
         edges:
             - user_feed:
-                amount: 1
+                amount: 3
             - like
             - likers:
-                amount: 1
+                amount: 30
             - print:
                 model:
                     name: x.full_name
