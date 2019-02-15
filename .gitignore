@@ -1,2 +1,2 @@
 .mypy*
-data/data.json
+data/genotype.json
