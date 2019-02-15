@@ -93,9 +93,9 @@ actions:
         nodes:                   {{ to_repost }}
         edges:
             - user_feed:
-                amount:          20
+                amount:          50
             - shuffle:
-                amount:          20
+                amount:          50
             - upload:
                 caption:         {{ caption }}
 
