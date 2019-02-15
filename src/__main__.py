@@ -24,7 +24,7 @@ if __name__ == '__main__':
         # hashtags=randomize(genotype.hashtags']),
         comments=randomize(genotype.comments, k=20),
         geotags=randomize(genotype.geotags),
-        to_repost =random.choice(genotype.competitors),
+        to_repost =random.choice(genotype.inspirations),
         caption=random.choice(genotype.captions,),
     ))
 
