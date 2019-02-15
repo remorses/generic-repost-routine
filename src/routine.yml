@@ -83,24 +83,18 @@ bots:
 
 
 
-actions:
-    -
-        nodes:
-            - thetruegemitaiz
-        edges:
-            - user_feed:
-                amount: 3
-            - like
-            - likers:
-                amount: 30
-            - print:
-                model:
-                    name: x.full_name
-                    id: x.pk
-                    username: x.username
-            # - comment:
-            #     max:      1
-            #     comments:
-            #         - [ 'ciao @{author}, {caption}?' ] # caption, author, usertags, geotag
-            #         # - ["come stai?", "come va?"]
-            #         # - ["http://instagram.com"]
+# actions:
+#     -
+#         nodes:
+#             - thetruegemitaiz
+#         edges:
+#             - user_feed:
+#                 amount: 3
+#             - like
+#             - likers:
+#                 amount: 30
+#             - print:
+#                 model:
+#                     name: x.full_name
+#                     id: x.pk
+#                     username: x.username
