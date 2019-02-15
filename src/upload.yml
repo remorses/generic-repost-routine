@@ -20,7 +20,8 @@ actions:
         from_type:               user
         nodes:                   {{ user_to_repost }}
         edges:
-            - user_feed
+            - user_feed:
+                amount: 20
             - shuffle:
                 amount:          20
             - upload:

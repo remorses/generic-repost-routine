@@ -39,11 +39,12 @@ actions:
                     # id:        not bot.cache['followed'].find(identifier=x)
                     is_private:  not x
                     is_verified: not x
-            - follow:
-                max:             20
             - filter:
                 user:
                     is_private:  not x
+            - follow:
+                max:             20
+
             - user_feed:
                 amount:          2
             - like:
@@ -53,22 +54,27 @@ actions:
         from_type:               hashtag
         nodes:                   {{ hashtags }}
         edges:
-            - hashtag_feed
-            - likers
+            - hashtag_feed:
+                amount:          1
+            - likers:
+                amount:          10
             - follow:
-                amount:          20
-            - user_feed
-            - like:
+                amount:          10
+            - user_feed:
                 amount:          2
+            - like:
+                max:             100
     -
         name:                    follow & like location posts likers
         from_type:               geotag
         nodes:                   {{ geotags }}
         edges:
-            - geotag_feed
-            - likers
-            - follow:
-                amount:          30
-            - user_feed
+            - geotag_feed:
+                amount: 20
+            - likers:
+                amount: 10
+            - follow
+            - user_feed:
+                amount: 1
             - like:
-                amount:          2
+                max: 100
