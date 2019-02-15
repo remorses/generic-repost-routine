@@ -23,7 +23,7 @@ if __name__ == '__main__':
         competitor=random.choice(genotype.competitors,),
         # hashtags=randomize(genotype.hashtags']),
         comments=randomize(genotype.comments, k=20),
-        geotags=randomize(genotype.geotags),
+        geotag=random.choice(genotype.geotags),
         to_repost =random.choice(genotype.inspirations),
         caption=random.choice(genotype.captions,),
     ))

@@ -57,7 +57,7 @@ actions:
     # -
     #     name:                  follow & like hashtags likers
     #     from_type:             hashtag
-    #     nodes:                 {{ hashtags }}
+    #     nodes:                 
     #     edges:
     #         - hashtag_feed:
     #             amount:        1
