@@ -1,8 +1,5 @@
-# generic-instagram-routine
-
-
-## bot that do some likes and follow and then repost an image
-
+## generic-repost-routine
+## bot does some likes and follow and then repost an image
 
 - follow, like and comment images from `genotype.competitors` likers
 - follow, like and comment images from `genotype.geotags` feed
