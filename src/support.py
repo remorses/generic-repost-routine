@@ -18,5 +18,5 @@ def load_json(path):
 
 def load_raw(path):
     with open(path) as file:
-        data = json.dumps(file.read())
+        data = file.read()
     return data
