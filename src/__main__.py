@@ -25,12 +25,16 @@ if __name__ == '__main__':
 
     ))
 
+    print('starting routine')
+
     execute(
         load_raw('src/routine.yml'),
         fenotype
     )
 
     time.sleep(10)
+
+    print('starting upload')
 
 
     fenotype = merge(genotype, dict(

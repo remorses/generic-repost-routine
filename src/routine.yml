@@ -12,69 +12,95 @@ bots:
         cache:                   {{ cache_path }}
 
 
-filter:
-        user:
-            followers:           x > 50 and x < 1000
-            following:           x < 500
-        media:
-            likers:              x < 1000
-            hastags:             not in [sex, porn, child]
+# filter:
+#         user:
+#             followers:           x > 50 and x < 1000
+#             following:           x < 500
+#         media:
+#             likers:              x < 1000
+#             hastags:             not in [sex, porn, child]
+#
+#
+# actions:
+#
+#     -
+#         name:                    like competitors followers
+#         from_type:               user
+#         nodes:                   {{ competitors }}
+#         edges:
+#             # follow random likers
+#             - shuffle
+#             - user_feed:
+#                 amount:          1
+#             - likers:
+#                 amount:          5
+#             - filter:
+#                 user:
+#                     # id:        not bot.cache['followed'].find(identifier=x)
+#                     is_private:  not x
+#                     is_verified: not x
+#             - filter:
+#                 user:
+#                     is_private:  not x
+#             - follow:
+#                 max:             20
+#
+#             - user_feed:
+#                 amount:          2
+#             - like:
+#                 max:             30
+#     -
+#         name:                    follow & like hashtags likers
+#         from_type:               hashtag
+#         nodes:                   {{ hashtags }}
+#         edges:
+#             - hashtag_feed:
+#                 amount:          1
+#             - likers:
+#                 amount:          10
+#             - follow:
+#                 amount:          10
+#             - user_feed:
+#                 amount:          2
+#             - like:
+#                 max:             100
+#     -
+#         name:                    follow & like location posts likers
+#         from_type:               geotag
+#         nodes:                   {{ geotags }}
+#         edges:
+#             - geotag_feed:
+#                 amount: 20
+#             - likers:
+#                 amount: 10
+#             - follow
+#             - user_feed:
+#                 amount: 1
+#             - like:
+#                 max: 100
+
+
+
 
 
 actions:
-
     -
-        name:                    like competitors followers
-        from_type:               user
-        nodes:                   {{ competitors }}
+        nodes:
+            - xmorse_
         edges:
-            # follow random likers
-            - shuffle
             - user_feed:
-                amount:          1
-            - likers:
-                amount:          5
-            - filter:
-                user:
-                    # id:        not bot.cache['followed'].find(identifier=x)
-                    is_private:  not x
-                    is_verified: not x
-            - filter:
-                user:
-                    is_private:  not x
-            - follow:
-                max:             20
-
-            - user_feed:
-                amount:          2
-            - like:
-                max:             30
-    -
-        name:                    follow & like hashtags likers
-        from_type:               hashtag
-        nodes:                   {{ hashtags }}
-        edges:
-            - hashtag_feed:
-                amount:          1
-            - likers:
-                amount:          10
-            - follow:
-                amount:          10
-            - user_feed:
-                amount:          2
-            - like:
-                max:             100
-    -
-        name:                    follow & like location posts likers
-        from_type:               geotag
-        nodes:                   {{ geotags }}
-        edges:
-            - geotag_feed:
                 amount: 20
+            - like
             - likers:
-                amount: 10
-            - follow
-            - user_feed:
-                amount: 1
-            - like:
-                max: 100
+                amount: 3
+            - print:
+                model:
+                    name: x.full_name
+                    id: x.pk
+                    username: x.username
+            # - comment:
+            #     max:      1
+            #     comments:
+            #         - [ 'ciao @{author}, {caption}?' ] # caption, author, usertags, geotag
+            #         # - ["come stai?", "come va?"]
+            #         # - ["http://instagram.com"]
