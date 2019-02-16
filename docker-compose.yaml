@@ -5,7 +5,7 @@ services:
         build:                .
         command:              python -m src
         environment:
-            - LOGGING_LEVEL=DEBUG
+            - LOGGING_LEVEL=INFO
             - GENOTYPE_FILE_PATH=/data/genotype.json
             - CACHE_FILE_PATH=/data/cache.db
             - COOKIE_FILE_PATH=/data/cookie.json
