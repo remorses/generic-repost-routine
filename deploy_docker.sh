@@ -9,7 +9,6 @@ IMAGE=`basename $PWD`  # image name
 
 
 test -f ./VERSION || (echo "file VERSION containing current version is needed" && exit 1)
-test -f ./build.sh || (echo "file build.sh containing build script is needed" && exit 1)
 
 git pull
 # bump version
@@ -17,8 +16,7 @@ docker run --rm -v "$PWD":/app treeder/bump patch
 version=`cat VERSION`
 echo "version: $version"
 # run build
-./build.sh
-# tag it
+docker build -t $REGISTRY/$IMAGE:latest . # tag it
 git add -A
 git commit -m "deploying docker version $version"
 # git commit -m "version $version"
