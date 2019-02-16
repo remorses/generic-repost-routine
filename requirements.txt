@@ -1,1 +1,3 @@
 instabotnet>=0.0.33
+dhash
+Pillow

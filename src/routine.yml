@@ -26,15 +26,15 @@ delay:
 actions:
 
     # -
-    #     name:                    unfollow
-    #     from_type:               user
+    #     name:                  unfollow
+    #     from_type:             user
     #     nodes:
     #         - {{ username }}
     #     edges:
     #         - following:
-    #             amount:          100
+    #             amount:        100
     #         - shuffle:
-    #             max:          10
+    #             max:           10
     #         - unfollow
     -
         name:                    follow, like and comment images from `genotype.competitors` likers
@@ -102,9 +102,14 @@ actions:
                 amount:          50
             - shuffle:
                 amount:          50
+            - return:
+                model:
+                    url:         x.url
+
             - upload:
                 max:             1
                 caption:         {{ caption }}
+
 
 
 
