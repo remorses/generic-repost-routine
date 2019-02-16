@@ -49,7 +49,7 @@ if __name__ == '__main__':
 
 
     try:
-        url = result[-1]['url']
+        url = result['reposted_images'][-1]['url']
         image = download(url)
         genotype['media_posted'] += [make_hash(image)]
     except:
