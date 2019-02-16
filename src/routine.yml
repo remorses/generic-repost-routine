@@ -37,7 +37,8 @@ actions:
     -
         name:                    follow, like and comment images from `genotype.competitors` likers
         from_type:               user
-        nodes:                   {{ competitor }}
+        nodes:
+            - {{ competitor }}
         edges:
             - user_feed:
                 amount:          10
@@ -57,7 +58,7 @@ actions:
     # -
     #     name:                  follow & like hashtags likers
     #     from_type:             hashtag
-    #     nodes:                 
+    #     nodes:
     #     edges:
     #         - hashtag_feed:
     #             amount:        1
@@ -72,7 +73,8 @@ actions:
     -
         name:                    follow, like and comment images from `genotype.geotags` feed
         from_type:               geotag
-        nodes:                   {{ geotag }}
+        nodes:
+            - {{ geotag }}
         edges:
             - geotag_feed:
                 amount:          1
@@ -90,7 +92,8 @@ actions:
     -
         name:                    repost
         from_type:               user
-        nodes:                   {{ to_repost }}
+        nodes:
+            - {{ to_repost }}
         edges:
             - user_feed:
                 amount:          50
