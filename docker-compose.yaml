@@ -3,7 +3,7 @@ version:                      '3.7'
 services:
     bot:
         build:                .
-        command:              python -m src
+        command:              python -B -OO -m src 
         environment:
             - LOGGING_LEVEL=INFO
             - GENOTYPE_FILE_PATH=/data/genotype.json

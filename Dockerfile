@@ -1,6 +1,5 @@
-FROM python:3.6-alpine
+FROM xmorse/instagram-botnet
 
-RUN apk  add --no-cache build-base jpeg-dev zlib-dev freetype-dev 
 
 COPY requirements.txt /
 RUN pip install -r /requirements.txt
@@ -12,4 +11,4 @@ COPY        ./src /src
 # CACHE_FILE_PATH
 # COOKIE_FILE_PATH
 
-CMD  ["python", "-m", "src"]
+CMD  ["python", "-00", "-m", "src"]
