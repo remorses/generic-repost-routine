@@ -1,3 +1,5 @@
 .mypy*
 data/genotype.json
 __pycache__
+.ropeproject
+.DS_Store
