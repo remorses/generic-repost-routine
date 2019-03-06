@@ -17,6 +17,9 @@ filter:
 
 delay:
     unfollow:                    5
+    like:                        2
+    comment: 2
+    
 
 
 actions:
