@@ -7,8 +7,8 @@ RUN pip install -r /requirements.txt
 WORKDIR     /
 COPY        ./src /src
 
-# GENOTYPE_FILE_PATH
-# CACHE_FILE_PATH
-# COOKIE_FILE_PATH
+# DATA
+# RETURN
+
 
 CMD  ["python", "-00", "-m", "src"]
