@@ -7,8 +7,7 @@ version:                         1
 bot:
         username:                {{ username }}
         password:                {{ password }}
-        cookie:                  {{ cookie_path }}
-        cache:                   {{ cache_path }}
+        # settings:                {{ settings }}
 
 
 filter:
@@ -17,7 +16,7 @@ filter:
             following:           x < 500
         media:
             likers:              x < 1000
-            hastags:             not in [sex, porn, child]
+            hastags:             not x in ["sex", "porn", "child"]
 
 delay:
     unfollow:                    5
@@ -37,25 +36,20 @@ actions:
     #             max:           10
     #         - unfollow
     -
-        name:                    follow, like and comment images from `genotype.competitors` likers
-        from_type:               user
+        name:                    competitors fans interactions
+        from:               user
         nodes:
-            - {{ competitor }}
+            - {{ random.choice(competitors) }}
         edges:
-            - user_feed:
+            - feed:
                 amount:          10
             - shuffle:
                 max:             1
                 batch:           10
             - likers:
                 amount:          30
-            - filter:
-                user:
-                    # id:        not bot.cache['followed'].find(identifier=x)
-                    is_private:  not x
-                    is_verified: not x
             - follow
-            - user_feed:
+            - feed:
                 amount:          1
             - like
     # -
@@ -74,17 +68,16 @@ actions:
     #         - like:
     #             max:           100
     -
-        name:                    follow, like and comment images from `genotype.geotags` feed
-        from_type:               geotag
+        name:                    geotag interactions
+        from:               geotag
         nodes:
-            - {{ geotag }}
+            - {{ random.choice(geotags) }}
         edges:
-            - geotag_feed:
+            - feed:
                 amount:          1
             - likers:
                 amount:          30
-            - follow
-            - user_feed:
+            - feed:
                 amount:          5
             - like
             - comment:
@@ -93,42 +86,23 @@ actions:
 
 
     -
-        name:                    repost
-        from_type:               user
+        name:                    repost a photo from inspirations
+        from:               user
         nodes:
-            - {{ to_repost }}
+            - {{ random.choice(inspirations) }}
         edges:
-            - user_feed:
-                amount:          50
+            - feed:
+                amount:          10
             - shuffle:
                 max:             1
-                batch:           50
-            - return:
+                batch:           10
+            - scrape:
                 key:             reposted_images
                 model:
-                    url:         x.url
+                    url:         x.sources[0]
             - upload:
                 max:             1
-                caption:         {{ caption }}
+                caption:         {{ random.choice(captions) }}
 
 
 
-
-
-
-#
-# actions:
-#     -
-#         nodes:
-#             - thetruegemitaiz
-#         edges:
-#             - user_feed:
-#                 amount:        3
-#             - like
-#             - likers:
-#                 amount:        30
-#             - print:
-#                 model:
-#                     name:      x.full_name
-#                     id:        x.pk
-#                     username:  x.username
