@@ -18,11 +18,11 @@ services:
                     "geotags": ["monaco"],
                     "hashtags": ["casino", "money", "lamborghini"],
                     "competitors": ["casino"],
-                    "inspirations": [],
+                    "inspirations": ["archillect.png"],
                     "captions": ["hey guys, fresh new photos here", "bella rega"],
                     "comments": ["awesome", "nice", "bella"],
                     "media_posted": [],
-                    "messages": [],
+                    "messages": ["ciao"]
                 }
           
             RETURN: "{}"

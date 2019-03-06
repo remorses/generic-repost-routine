@@ -7,9 +7,6 @@ version:                         1
 bot:
         username:                {{ username }}
         password:                {{ password }}
-        # settings:                {{ settings }}
-
-
 filter:
         user:
             followers:           x > 50 and x < 1000
