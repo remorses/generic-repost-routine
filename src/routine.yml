@@ -1,135 +1,80 @@
-
 name:                            routine
 version:                         1
 
-
-
 bot:
-        username:                {{ username }}
-        password:                {{ password }}
+       username:                {{ username }}
+       password:                {{ password }}
+       latitude: 53.2734
+       langitude: -7.77832031
+       
 filter:
-        user:
-            followers:           x > 50 and x < 1000
-            following:           x < 500
-        media:
-            likers:              x < 1000
-            hastags:             not x in ["sex", "porn", "child"]
+       user:
+           followers:           x > 50 and x < 1000
+           following:           x < 500
+       media:
+           likers:              x < 1000
+           hastags:             not x in ["sex", "porn", "child"]
 
 delay:
-    unfollow:                    5
-<<<<<<< HEAD
-    comment: 7
-    like: 10
-    follow: 10
-=======
-    like:                        2
-    comment: 2
-    
-
->>>>>>> 968b144382e9fdea08f7e5f8fc702c944ec867b9
+   unfollow:                    20
+   comment: 25
+   like: 20
+   follow: 20
 
 actions:
-
-    # -
-    #     name:                  unfollow
-    #     from_type:             user
-    #     nodes:
-    #         - {{ username }}
-    #     edges:
-    #         - following:
-    #             amount:        100
-    #         - shuffle:
-    #             max:           10
-    #         - unfollow
-<<<<<<< HEAD
-    -
-        name:                    competitors fans interactions
-        from:               user
-        nodes:
-            - {{ random.choice(competitors) }}
-        edges:
-            - feed:
-                amount:          10
-            - shuffle:
-                max:             1
-                batch:           10
-            - likers:
-                amount:          20
-            - follow
-            - feed:
-                amount:          1
-            - like
-=======
-
->>>>>>> 968b144382e9fdea08f7e5f8fc702c944ec867b9
-    # -
-    #     name:                  follow & like hashtags likers
-    #     from_type:             hashtag
-    #     nodes:
-    #     edges:
-    #         - hashtag_feed:
-    #             amount:        1
-    #         - likers:
-    #             amount:        10
-    #         - follow:
-    #             amount:        10
-    #         - user_feed:
-    #             amount:        2
-    #         - like:
-    #             max:           100
-    -
-        name:                    geotag interactions
-        from:               geotag
-        nodes:
-            - {{ random.choice(geotags) }}
-        edges:
-            - feed:
-                amount:          1
-            - likers:
-                amount:          20
-            - feed:
-                amount:          5
-            - like
-            - comment:
-                comments:
-                    - {{ comments }}
+   -
+       name:                    competitors fans interactions
+       from:               user
+       nodes:
+           - {{ random.choice(competitors) }}
+       edges:
+           - feed:
+               amount:          10
+           - shuffle:
+               max:             1
+               batch:           10
+           - likers:
+               amount:          20
+           - follow
+           - feed:
+               amount:          1
+           - like
+   -
+       name:                    geotag interactions
+       from:               geotag
+       nodes:
+           - {{ random.choice(geotags) }}
+       edges:
+           - feed:
+               amount:          1
+           - likers:
+               amount:          20
+           - feed:
+               amount:          2
+           - like
+           - comment:
+               comments:
+                   - {{ comments }}
 
 
-    -
-        name:                    repost a photo from inspirations
-        from:               user
-        nodes:
-            - {{ random.choice(inspirations) }}
-        edges:
-            - feed:
-                amount:          10
-            - shuffle:
-                max:             1
-                batch:           10
-            - scrape:
-                key:             reposted_images
-                model:
-                    url:         x.sources[0]
-            - upload_post:
-                max:             1
-                caption:         {{ random.choice(captions) }}
-                geotag: monaco
+   -
+       name:                    repost a photo from inspirations
+       from:               user
+       nodes:
+           - {{ random.choice(inspirations) }}
+       edges:
+           - feed:
+               amount:          10
+           - shuffle:
+               max:             1
+               batch:           10
+           - scrape:
+               key:             reposted_images
+               model:
+                   url:         x.images[0]
+           - upload_post:
+               max:             1
+               caption:         {{ random.choice(captions) }}
+               geotag: monaco
 
-    -
-        name:                    competitors fans interactions
-        from:               user
-        nodes:
-            - {{ random.choice(competitors) }}
-        edges:
-            - feed:
-                amount:          10
-            - shuffle:
-                max:             1
-                batch:           10
-            - likers:
-                amount:          30
-            - follow
-            - feed:
-                amount:          1
-            - like
 

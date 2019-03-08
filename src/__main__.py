@@ -23,13 +23,19 @@ def make_hash(data):
 
 if __name__ == '__main__':
     data = json.loads(os.environ['DATA'])
+    
+    script = os.environ.get('SCRIPT') or \
+        (os.environ.get('SCRIPT_FILE') and load_raw(os.environ.get('SCRIPT_FILE'))) or \
+        load_raw('src/routine.yml')
 
     print('starting routine')
 
     result = execute(
-        load_raw('src/routine.yml'),
+        script,
         data
     )
+    
+    print(json.dumps(result, indent=4))
 
     try:
         url = result['reposted_images'][-1]['url']
@@ -38,6 +44,6 @@ if __name__ == '__main__':
     except:
         print('no media posted')
 
-    os.environ['RETURN'] = json.dumps(data)
+    os.environ['RETURN'] = json.dumps(data, indent=4)
 
 
