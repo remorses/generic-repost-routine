@@ -17,7 +17,9 @@ filter:
 
 delay:
     unfollow:                    5
-
+    comment: 7
+    like: 10
+    follow: 10
 
 actions:
 
@@ -44,7 +46,7 @@ actions:
                 max:             1
                 batch:           10
             - likers:
-                amount:          30
+                amount:          20
             - follow
             - feed:
                 amount:          1
@@ -73,7 +75,7 @@ actions:
             - feed:
                 amount:          1
             - likers:
-                amount:          30
+                amount:          20
             - feed:
                 amount:          5
             - like
