@@ -10,6 +10,7 @@ import random
 import dhash
 import time
 import json
+import sys
 
 def download(url):
     response = urllib.request.urlopen(url)
@@ -22,6 +23,7 @@ def make_hash(data):
     return dhash.format_hex(row, col)
 
 if __name__ == '__main__':
+    result_path = sys.argv[-1]
     data = json.loads(os.environ['DATA'])
     
     script = os.environ.get('SCRIPT') or \
@@ -41,9 +43,10 @@ if __name__ == '__main__':
         url = result['reposted_images'][-1]['url']
         image = download(url)
         data['media_posted'] += [make_hash(image)]
-    except:
-        print('no media posted')
+    except Exception as e:
+        print('no media posted', e)
 
-    os.environ['RETURN'] = json.dumps(data, indent=4)
+    with open(result_path, 'w') as f:
+        f.write(json.dumps(data, indent=4))
 
 

@@ -3,7 +3,7 @@ version:                      '3.7'
 services:
     bot_reposter:
         build:                .
-        command:              python -B -OO -m src && echo $RETURN 
+        command:              python -B -OO -m src result.json && echo `cat result.json` 
         environment:
             # LOGGING_LEVEL: INFO
             PYTHONUNBUFFERED: 1
@@ -24,7 +24,6 @@ services:
                     "media_posted": [],
                     "messages": ["ciao"]
                 }
-            RETURN: "{}"
             SCRIPT: |
                     name:                            routine
                     version:                         1
