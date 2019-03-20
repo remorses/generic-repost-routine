@@ -18,7 +18,7 @@ jobs:
                     "media_posted": [],
                     "messages": ["ciao"]
                 }
-            SCRIPT: |
+          SCRIPT: |
                 bot:
                     username: {{ username }}
                     password: {{ password }}
