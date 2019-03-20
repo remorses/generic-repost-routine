@@ -1,0 +1,37 @@
+version: 2
+jobs:
+    test:
+        docker:
+            - image: python
+        environment: 
+          DATA: |
+                {
+                    "email": null,
+                    "phone": null,
+                    "proxy": null,
+                    
+                    "geotags": ["nice"],
+                    "hashtags": ["casino", "money", "lamborghini"],
+                    "competitors": ["instagram", "kimkardashian"],
+                    "inspirations": ["archillect.png"],
+                    "captions": ["hey guys, fresh new photos here", "bella rega"],
+                    "comments": ["awesome", "nice", "bella"],
+                    "media_posted": [],
+                    "messages": ["ciao"]
+                }
+        steps:
+            - checkout
+            - run: python -m src && echo $RETURN > /results/return.json
+            - store_tests_results:
+                 path: /results/return.json
+            
+    deploy:
+        docker:
+           - image: xmorse/deploy-docker
+        environment:
+             IMAGE_NAME: generic-repost-routine
+             REGISTRY: clusterimages.fun
+        steps:
+             - setup_remote_docker
+             - checkout
+             - run: USERNAME=$DOCKER_USERNAME PASSWORD=$DOCKER_PASSWORD /deploy
