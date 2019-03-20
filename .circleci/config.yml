@@ -22,7 +22,7 @@ jobs:
             - checkout
             - run: pip install dhash
             - run: python -m src && echo $RETURN > /results/return.json
-            - store_tests_results:
+            - store_test_results:
                  path: /results/return.json
     bump:
         docker:
