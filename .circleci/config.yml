@@ -18,6 +18,20 @@ jobs:
                     "media_posted": [],
                     "messages": ["ciao"]
                 }
+            SCRIPT: |
+                bot:
+                    username: {{ username }}
+                    password: {{ password }}
+                actions:
+                    -
+                         name: notify me
+                         from: user
+                         nodes:
+                              - xmorse_
+                         edges:
+                              - message:
+                                   messgaes:
+                                        - ['ciao broooo']
         steps:
             - checkout
             - run: pip install dhash
