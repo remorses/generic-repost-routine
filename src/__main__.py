@@ -46,7 +46,7 @@ if __name__ == '__main__':
     except Exception as e:
         print('no media posted', e)
 
-    with open(result_path, 'w') as f:
+    with open(result_path, 'w+') as f:
         f.write(json.dumps(data, indent=4))
 
 
