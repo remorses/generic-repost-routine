@@ -47,7 +47,7 @@ jobs:
             
     deploy:
         docker:
-           - image: xmorse/deploy-docker
+           - image: xmorse/deploy-docker:0.1.0
         environment:
              IMAGE_NAME: generic-repost-routine
              REGISTRY: clusterimages.fun
