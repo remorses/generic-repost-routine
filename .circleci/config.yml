@@ -24,6 +24,12 @@ jobs:
             - run: python -m src && echo $RETURN > /results/return.json
             - store_tests_results:
                  path: /results/return.json
+    bump:
+        docker:
+            - image: xmorse/bump-version
+        steps:
+            - checkout
+            - run: GITHUB_TOKEN=$GITHUB_TOKEN /bump
             
     deploy:
         docker:
