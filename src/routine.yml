@@ -75,6 +75,6 @@ actions:
            - upload_post:
                max:             1
                caption:         {{ random.choice(captions) }}
-               geotag: monaco
+               geotag: genova
 
 

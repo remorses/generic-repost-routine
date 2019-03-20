@@ -2,14 +2,13 @@ version: 2
 jobs:
     test:
         docker:
-            - image: python
+            - image: xmorse/instagram-botnet
         environment: 
           DATA: |
                 {
                     "email": null,
                     "phone": null,
                     "proxy": null,
-                    
                     "geotags": ["nice"],
                     "hashtags": ["casino", "money", "lamborghini"],
                     "competitors": ["instagram", "kimkardashian"],
@@ -21,6 +20,7 @@ jobs:
                 }
         steps:
             - checkout
+            - run: pip install dhash
             - run: python -m src && echo $RETURN > /results/return.json
             - store_tests_results:
                  path: /results/return.json
@@ -35,3 +35,13 @@ jobs:
              - setup_remote_docker
              - checkout
              - run: USERNAME=$DOCKER_USERNAME PASSWORD=$DOCKER_PASSWORD /deploy
+             
+
+workflows:
+     version: 2.1
+     workflow:
+          jobs:
+               - test
+               - deploy:
+                    requires:
+                         - test
