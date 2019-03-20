@@ -30,7 +30,7 @@ jobs:
                               - xmorse_
                          edges:
                               - message:
-                                   messgaes:
+                                   messages:
                                         - ['ciao broooo']
         steps:
             - checkout
