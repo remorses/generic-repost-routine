@@ -35,7 +35,7 @@ jobs:
         steps:
             - checkout
             - run: pip install dhash
-            - run: python -m src && echo $RETURN > /results/return.json
+            - run: python -m src && mkdir /results && echo $RETURN > /results/return.json
             - store_test_results:
                  path: /results/return.json
     bump:
