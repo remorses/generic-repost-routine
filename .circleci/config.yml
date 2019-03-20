@@ -62,6 +62,9 @@ workflows:
      workflow:
           jobs:
                - test
+               - bump:
+                    requires:
+                        - test
                - deploy:
                     requires:
-                         - test
+                        - bump 
