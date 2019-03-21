@@ -37,7 +37,9 @@ jobs:
             - run: pip install dhash
             - run: mkdir /results  && python -m src  /results/return.json
             - store_test_results:
-                 path: /results/return.json
+                 path: /results
+            - store_artifacts:
+                 path: /results
     bump:
         docker:
             - image: xmorse/bump-version
