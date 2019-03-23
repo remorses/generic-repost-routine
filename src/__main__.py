@@ -24,6 +24,7 @@ def make_hash(data):
 
 if __name__ == '__main__':
     result_path = sys.argv[-1]
+    print(os.environ['DATA'])
     data = json.loads(os.environ['DATA'])
     
     script = os.environ.get('SCRIPT') or \
