@@ -5,7 +5,7 @@ bot:
        username:                {{ username }}
        password:                {{ password }}
        latitude: 53.2734
-       langitude: -7.77832031
+       longitude: -7.77832031
        
 filter:
        user:
