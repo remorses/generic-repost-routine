@@ -43,7 +43,7 @@ if __name__ == '__main__':
     try:
         url = result['reposted_images'][-1]['url']
         image = download(url)
-        data['media_posted'] += [make_hash(image)]
+        data['uploadedMediasHashes'] += [make_hash(image)]
     except Exception as e:
         print('no media posted', e)
 
