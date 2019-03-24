@@ -1,4 +1,4 @@
-FROM xmorse/instagram-botnet:0.2.49
+FROM xmorse/instagram-botnet:0.2.53
 
 
 COPY requirements.txt /
