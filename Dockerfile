@@ -1,5 +1,6 @@
 FROM xmorse/instagram-botnet:0.2.53
 
+RUN apk add --no-cache curl
 
 COPY requirements.txt /
 
