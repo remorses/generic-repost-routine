@@ -67,7 +67,7 @@ actions:
                amount:          10
            - shuffle:
                max:             1
-               batch:           10
+               batch:           50
            - scrape:
                key:             reposted_images
                model:

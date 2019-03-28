@@ -47,6 +47,7 @@ if __name__ == '__main__':
             
     except Exception as e:
         result = str(e)
+        raise e from None
     
     finally:
         print("result:\n", json.dumps(result, indent=4))
