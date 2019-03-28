@@ -23,6 +23,18 @@ delay:
 
 actions:
    -
+       name: unfollow
+       from: user
+       nodes: 
+              - {{ username }}
+       edges:
+           - followers:
+               amount: 50 
+           - shuffle:
+               max: 5
+               batch: 50
+           - unfollow
+   -
        name:                    competitors fans interactions
        from:               user
        nodes:
