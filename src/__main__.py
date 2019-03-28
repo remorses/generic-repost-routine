@@ -32,22 +32,28 @@ if __name__ == '__main__':
         load_raw('src/routine.yml')
 
     print('starting routine')
-
-    result = execute(
-        script,
-        data
-    )
     
-    print(json.dumps(result, indent=4))
-
-    try:
-        url = result['reposted_images'][-1]['url']
-        image = download(url)
-        data['uploadedMediasHashes'] += [make_hash(image)]
+    try:    
+        result = execute(
+            script,
+            data
+        )
+        try:
+            url = result['reposted_images'][-1]['url']
+            image = download(url)
+            data['uploadedMediasHashes'] += [make_hash(image)]
+        except Exception as e:
+            print('no media posted', e)
+            
     except Exception as e:
-        print('no media posted', e)
+        result = str(e)
+    
+    finally:
+        print("result:\n", json.dumps(result, indent=4))
+        with open(result_path, 'w+') as f:
+            f.write(json.dumps(data, indent=4))
 
-    with open(result_path, 'w+') as f:
-        f.write(json.dumps(data, indent=4))
+
+
 
 
