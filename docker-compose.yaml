@@ -29,7 +29,7 @@ services:
                     version:                         1
 
                     bot:
-                            username:                {{ username }}
+                            username:                remors.redhence
                             password:                {{ password }}
                             latitude: 53.2734
                             langitude: -7.77832031
