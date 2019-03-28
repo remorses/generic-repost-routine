@@ -58,6 +58,7 @@ jobs:
              - checkout
              - run: USERNAME=$DOCKER_USERNAME PASSWORD=$DOCKER_PASSWORD /deploy
              
+             
 
 workflows:
      version: 2
