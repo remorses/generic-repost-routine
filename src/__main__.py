@@ -52,4 +52,4 @@ if __name__ == '__main__':
     finally:
         print("result:\n", json.dumps(result, indent=4))
         with open(result_path, 'w+') as f:
-            f.write(json.dumps(data, indent=4))
+            f.write(json.dumps(result, indent=4))
