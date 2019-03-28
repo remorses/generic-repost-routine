@@ -53,8 +53,3 @@ if __name__ == '__main__':
         print("result:\n", json.dumps(result, indent=4))
         with open(result_path, 'w+') as f:
             f.write(json.dumps(data, indent=4))
-
-
-
-
-
