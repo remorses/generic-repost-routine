@@ -34,9 +34,11 @@ if __name__ == '__main__':
 
     print('starting routine')
 
-    settings_path = 'settings.json'
     if not "settings_path" in data:
+        settings_path = 'settings.json'
         data['settings_path'] = settings_path
+    else:
+        settings_path = data['settings_path']
 
     try:
         result = execute(
