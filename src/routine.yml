@@ -1,68 +1,69 @@
-name:                            routine
-version:                         1
+name:                    routine
+version:                 1
 
 bot:
-       username:                {{ username }}
-       password:                {{ password }}
-       latitude: 53.2734
-       longitude: -7.77832031
-       
+       username:         {{ username }}
+       password:         {{ password }}
+       latitude:         53.2734
+       longitude:        -7.77832031
+       settings_path:    {{ settings_path }}
+
 filter:
        user:
-           followers:           x > 50 and x < 1000
-           following:           x < 500
+           followers:    x > 50 and x < 1000
+           following:    x < 500
        media:
-           likers:              x < 1000
-           hastags:             not x in ["sex", "porn", "child"]
+           likers:       x < 1000
+           hastags:      not x in ["sex", "porn", "child"]
 
 delay:
-   unfollow:                    20
-   comment: 25
-   like: 20
-   follow: 20
+   unfollow:             20
+   comment:              25
+   like:                 20
+   follow:               20
 
 actions:
    -
-       name: unfollow
-       from: user
-       nodes: 
+       name:             unfollow
+       from:             user
+       nodes:
               - {{ username }}
        edges:
            - followers:
-               amount: 50 
+               amount:   50
            - shuffle:
-               max: 5
-               batch: 50
+               max:      5
+               batch:    50
            - unfollow
    -
-       name:                    competitors fans interactions
-       from:               user
+       name:             competitors fans interactions
+       from:             user
        nodes:
            - {{ random.choice(competitors) }}
        edges:
            - feed:
-               amount:          10
+               amount:   10
            - shuffle:
-               max:             1
-               batch:           10
+               max:      1
+               batch:    10
            - likers:
-               amount:          20
+               amount:   20
            - follow
            - feed:
-               amount:          1
+               amount:   1
            - like
    -
-       name:                    geotag interactions
-       from:               geotag
+       name:             geotag interactions
+       from:             geotag
        nodes:
            - {{ random.choice(geotags) }}
        edges:
            - feed:
-               amount:          1
+               amount:   1
            - likers:
-               amount:          20
+               amount:   20
            - feed:
-               amount:          2
+               amount:   2
            - like
            - comment:
                comments:
@@ -70,23 +71,21 @@ actions:
 
 
    -
-       name:                    repost a photo from inspirations
-       from:               user
+       name:             repost a photo from inspirations
+       from:             user
        nodes:
            - {{ random.choice(inspirations) }}
        edges:
            - feed:
-               amount:          10
+               amount:   10
            - shuffle:
-               max:             1
-               batch:           50
+               max:      1
+               batch:    50
            - scrape:
-               key:             reposted_images
+               key:      reposted_images
                model:
-                   url:         x.images[0]
+                   url:  x.images[0]
            - upload_post:
-               max:             1
-               caption:         {{ random.choice(captions) }}
-               geotag: genova
-
-
+               max:      1
+               caption:  {{ random.choice(captions) }}
+               geotag:   genova

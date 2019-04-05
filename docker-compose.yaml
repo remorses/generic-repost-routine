@@ -3,18 +3,18 @@ version:                      '3.7'
 services:
     bot_reposter:
         build:                .
-        command:              python -B -OO -m src result.json && echo `cat result.json` 
+        command:              python -B -OO -m src result.json && echo `cat result.json`
         environment:
             # LOGGING_LEVEL: INFO
             PYTHONUNBUFFERED: 1
             DATA: |
                 {
                     "email": null,
-                    "username": "remors.b13",
+                    "username": "remors.redhence",
                     "password": "ciuccio99",
                     "phone": null,
                     "proxy": null,
-                    
+                    "settings_path": "settings_file.json",
                     "geotags": ["nice"],
                     "hashtags": ["casino", "money", "lamborghini"],
                     "competitors": ["instagram", "kimkardashian"],
@@ -33,7 +33,8 @@ services:
                             password:                {{ password }}
                             latitude: 53.2734
                             langitude: -7.77832031
-                            
+                            settings_path: {{ settings_path }}
+
                     filter:
                             user:
                                 followers:           x > 50 and x < 1000
@@ -103,5 +104,3 @@ services:
                                     max:             1
                                     caption:         {{ random.choice(captions) }}
                                     geotag: monaco
-
-
