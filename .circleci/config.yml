@@ -2,7 +2,7 @@ version: 2
 jobs:
     test:
         docker:
-            - image: xmorse/instagram-botnet:0.3.5
+            - image: xmorse/instagram-botnet:0.3.6
         environment:
           DATA: |
                 {
@@ -43,14 +43,14 @@ jobs:
                  path: /results
     bump:
         docker:
-            - image: xmorse/bump-version
+            - image: cistuff/bump
         steps:
             - checkout
             - run: GITHUB_TOKEN=$GITHUB_TOKEN /bump
 
     deploy:
         docker:
-           - image: cistuff/deploy-docker:1.0.12
+           - image: cistuff/deploy-docker
         environment:
              IMAGE_NAME: generic-repost-routine
              REGISTRY: clusterimages.fun
