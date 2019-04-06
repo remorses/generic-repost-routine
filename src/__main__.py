@@ -45,6 +45,8 @@ if __name__ == '__main__':
             script,
             data
         )
+        print("result:\n", json.dumps(result, indent=4))
+        
         with open(settings_path, 'r') as f:
             return_data['settings'] = json.load(f)
         try:
@@ -59,6 +61,6 @@ if __name__ == '__main__':
         raise e from None
 
     finally:
-        print("result:\n", json.dumps(result, indent=4))
+
         with open(return_data_path, 'w+') as f:
             f.write(json.dumps(return_data, indent=4))
