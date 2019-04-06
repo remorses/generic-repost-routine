@@ -2,8 +2,8 @@ version: 2
 jobs:
     test:
         docker:
-            - image: xmorse/instagram-botnet:0.3.2
-        environment: 
+            - image: xmorse/instagram-botnet:0.3.5
+        environment:
           DATA: |
                 {
                     "email": null,
@@ -46,7 +46,7 @@ jobs:
         steps:
             - checkout
             - run: GITHUB_TOKEN=$GITHUB_TOKEN /bump
-            
+
     deploy:
         docker:
            - image: cistuff/deploy-docker:1.0.12
@@ -57,8 +57,8 @@ jobs:
              - setup_remote_docker
              - checkout
              - run: USERNAME=$DOCKER_USERNAME PASSWORD=$DOCKER_PASSWORD /deploy
-             
-             
+
+
 
 workflows:
      version: 2
@@ -70,4 +70,4 @@ workflows:
                         - test
                - deploy:
                     requires:
-                        - bump 
+                        - bump
