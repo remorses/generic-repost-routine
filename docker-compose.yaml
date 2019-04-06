@@ -3,7 +3,7 @@ version:                      '3.7'
 services:
     bot_reposter:
         build:                .
-        command:              python -B -OO -m src result.json && echo `cat result.json`
+        command:              sh -c "python -B -OO -m src /result.json && echo `cat /result.json`"
         environment:
             # LOGGING_LEVEL: INFO
             PYTHONUNBUFFERED: 1
@@ -14,7 +14,14 @@ services:
                     "password": "ciuccio99",
                     "phone": null,
                     "proxy": null,
-                    "settings_path": "settings_file.json",
+                    "settings": {
+                        "uuid": "d783237c-53d0-11e9-9665-d46e0e1b2c0d",
+                        "device_id": "android-d783246c53d011e9",
+                        "ad_id": "624c37e5-9766-238f-26f6-08737416aeeb",
+                        "session_id": "d78324bc-53d0-11e9-9665-d46e0e1b2c0d",
+                        "created_ts": 1554049205
+                    },
+                    "settings_path": "settings.json",
                     "geotags": ["nice"],
                     "hashtags": ["casino", "money", "lamborghini"],
                     "competitors": ["instagram", "kimkardashian"],
@@ -25,82 +32,32 @@ services:
                     "messages": ["ciao"]
                 }
             SCRIPT: |
-                    name:                            routine
-                    version:                         1
+                    name:                    routine
+                    version:                 1
 
                     bot:
-                            username:                remors.redhence
-                            password:                {{ password }}
-                            latitude: 53.2734
-                            langitude: -7.77832031
-                            settings_path: {{ settings_path }}
-
-                    filter:
-                            user:
-                                followers:           x > 50 and x < 1000
-                                following:           x < 500
-                            media:
-                                likers:              x < 1000
-                                hastags:             not x in ["sex", "porn", "child"]
+                           username:         {{ username }}
+                           password:         {{ password }}
+                           latitude:         53.2734
+                           longitude:        -7.77832031
+                           settings_path:    {{ settings_path }}
 
                     delay:
-                        unfollow:                    20
-                        comment: 25
-                        like: 20
-                        follow: 20
+                       unfollow:             20
+                       comment:              25
+                       like:                 30
+                       follow:               20
 
                     actions:
-                        -
-                            name:                    competitors fans interactions
-                            from:               user
-                            nodes:
-                                - {{ random.choice(competitors) }}
-                            edges:
-                                - feed:
-                                    amount:          10
-                                - shuffle:
-                                    max:             1
-                                    batch:           10
-                                - likers:
-                                    amount:          20
-                                - follow
-                                - feed:
-                                    amount:          1
-                                - like
-                        -
-                            name:                    geotag interactions
-                            from:               geotag
-                            nodes:
-                                - {{ random.choice(geotags) }}
-                            edges:
-                                - feed:
-                                    amount:          1
-                                - likers:
-                                    amount:          20
-                                - feed:
-                                    amount:          2
-                                - like
-                                - comment:
-                                    comments:
-                                        - {{ comments }}
-
-
-                        -
-                            name:                    repost a photo from inspirations
-                            from:               user
-                            nodes:
-                                - {{ random.choice(inspirations) }}
-                            edges:
-                                - feed:
-                                    amount:          10
-                                - shuffle:
-                                    max:             1
-                                    batch:           10
-                                - scrape:
-                                    key:             reposted_images
-                                    model:
-                                        url:         x.images[0]
-                                - upload_post:
-                                    max:             1
-                                    caption:         {{ random.choice(captions) }}
-                                    geotag: monaco
+                       -
+                           name:             unfollow
+                           from:             user
+                           nodes:
+                                  - {{ username }}
+                           edges:
+                               - followers:
+                                   amount:   100
+                               - shuffle:
+                                   max:      1
+                                   batch:    100
+                               - unfollow
