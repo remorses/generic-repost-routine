@@ -2,7 +2,7 @@ version: 2
 jobs:
     test:
         docker:
-            - image: xmorse/instagram-botnet:0.3.6
+            - image: xmorse/instagram-botnet:0.3.7
         environment:
           DATA: |
                 {

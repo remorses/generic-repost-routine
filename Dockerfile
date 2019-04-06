@@ -1,4 +1,4 @@
-FROM xmorse/instagram-botnet:0.3.6
+FROM xmorse/instagram-botnet:0.3.7
 
 RUN apk add --no-cache curl
 
